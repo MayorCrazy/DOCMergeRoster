@@ -108,11 +108,12 @@ allformat<-createStyle(halign = 'left',
 )
 centerformat<-createStyle(halign = 'center')
 headerformat<-createStyle(textDecoration ='Bold',fgFill ='#88c2a0')
+
 #Apply formatting styles
-addStyle(wb, sheet = 1, allformat, rows = 1:400, cols = 1:11, gridExpand = TRUE)
-addStyle(wb, sheet = 2, allformat, rows = 1:400, cols = 1:11, gridExpand = TRUE)
-addStyle(wb, sheet = 3, allformat, rows = 1:400, cols = 1:11, gridExpand = TRUE)
-addStyle(wb, sheet = 4, allformat, rows = 1:400, cols = 1:11, gridExpand = TRUE)
+addStyle(wb, sheet = 1, allformat, rows = 1:nrow(TRoster)+1, cols = 1:11, gridExpand = TRUE)
+addStyle(wb, sheet = 2, allformat, rows = 1:nrow(NClientsDOC)+1, cols = 1:11, gridExpand = TRUE)
+addStyle(wb, sheet = 3, allformat, rows = 1:nrow(RClientsDOC)+1, cols = 1:11, gridExpand = TRUE)
+addStyle(wb, sheet = 4, allformat, rows = 1:nrow(CCSRoster)+1, cols = 1:11, gridExpand = TRUE)
 
 
 addStyle(wb, sheet = 1, headerformat, rows = 1, cols = c(1:11), gridExpand = TRUE, stack = TRUE)
@@ -120,17 +121,17 @@ addStyle(wb, sheet = 2, headerformat, rows = 1, cols = c(1:11), gridExpand = TRU
 addStyle(wb, sheet = 3, headerformat, rows = 1, cols = c(1:11), gridExpand = TRUE, stack = TRUE)
 addStyle(wb, sheet = 4, headerformat, rows = 1, cols = c(1:11), gridExpand = TRUE, stack = TRUE)
 
-addStyle(wb, sheet = 1, centerformat, rows = 1:5000, cols = c(4:6,8:11), gridExpand = TRUE, stack = TRUE)
-addStyle(wb, sheet = 2, centerformat, rows = 1:5000, cols = c(4:6,8:11), gridExpand = TRUE, stack = TRUE)
-addStyle(wb, sheet = 3, centerformat, rows = 1:5000, cols = c(4:6,8:11), gridExpand = TRUE, stack = TRUE)
-addStyle(wb, sheet = 4, centerformat, rows = 1:5000, cols = c(4:6,8:11), gridExpand = TRUE, stack = TRUE)
+addStyle(wb, sheet = 1, centerformat, rows = 1:nrow(TRoster)+1, cols = c(4:6,8:11), gridExpand = TRUE, stack = TRUE)
+addStyle(wb, sheet = 2, centerformat, rows = 1:nrow(NClientsDOC)+1, cols = c(4:6,8:11), gridExpand = TRUE, stack = TRUE)
+addStyle(wb, sheet = 3, centerformat, rows = 1:nrow(RClientsDOC)+1, cols = c(4:6,8:11), gridExpand = TRUE, stack = TRUE)
+addStyle(wb, sheet = 4, centerformat, rows = 1:nrow(CCSRoster)+1, cols = c(4:6,8:11), gridExpand = TRUE, stack = TRUE)
 
 setColWidths(wb,sheet =1, col=1:11,widths = 'auto')
 setColWidths(wb,sheet =2, col=1:11,widths = 'auto')
 setColWidths(wb,sheet =3, col=1:11,widths = 'auto')
 setColWidths(wb,sheet =4, col=1:11,widths = 'auto')
 
-FileName<-paste0("DOC MH Roster Philadelphia Unified",format(Sys.Date(),"%Y-%b"),".xlsx")
+FileName<-paste0("DOC MH Roster Philadelphia Unified ",format(Sys.Date(),"%Y-%b"),".xlsx")
 
 Path<-paste0("C:/Users/cmccrea/Box/BHJD/DOC/Rosters/",FileName)
 saveWorkbook(wb, Path, overwrite = TRUE)
