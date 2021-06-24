@@ -16,25 +16,25 @@ con <- dbConnect(odbc(), Driver = "SQL Server", Server = "SQL-HQ",
                  Database = "SCCJU", Trusted_Connection = "True")
 
 CCSRoster <- dbGetQuery(con,"
-
-select 
-[ClientID#] as 'ClientID'
-      ,[SS#] as 'SSN'
-      ,[LastName] 
-      ,[FirstName]
-      ,[DOB]
-      ,[PP#] as 'PID'
-      ,[SID]
-  	  ,DOC.Inmate_No as 'Inmate.Number'
-   
-
-from tblclient as c
-left join tblDOCentry as DOC on c.ClientID#=DOC.clientID
-
-where deleted =0
-	and c.LastName not like '%test%'
-
-")
+                        
+                        select 
+                        [ClientID#] as 'ClientID'
+                        ,[SS#] as 'SSN'
+                        ,[LastName] 
+                        ,[FirstName]
+                        ,[DOB]
+                        ,[PP#] as 'PID'
+                        ,[SID]
+                        ,DOC.Inmate_No as 'Inmate.Number'
+                        
+                        
+                        from tblclient as c
+                        left join tblDOCentry as DOC on c.ClientID#=DOC.clientID
+                        
+                        where deleted =0
+                        and c.LastName not like '%test%'
+                        
+                        ")
 
 
 ############# SOURCE FILEs #################
